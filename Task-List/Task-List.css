@@ -1,0 +1,136 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    box-sizing: border-box; margin:0;
+}
+:root{
+    --dark: #374151;
+    --darker: #1F2937;
+    --darkest: #111827;
+    --gray: #6b7280;
+    --light: #eee;
+    --pink: #ec4899;
+    --purple: #8b5cf6;
+}
+body{
+    display: flex;
+    flex-direction: column;  /* 直向排列 */
+    min-height: 100vh;
+    background: var(--dark);
+    color: white;
+}
+header{
+    padding: 2rem 1rem;
+    /* rem：相對單位，每個元素透過「倍數」乘以根元素的 px 值。根元素是 html, 其font-size預設為 16px */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+header h1{
+    font-size: 2.5rem; font-weight: 300;
+    margin-bottom: 1rem; color: var(--gray);
+}
+#new-task-form{
+    display: flex;
+}
+input, button{
+ appearance: none; /*appearance: none*/
+ border: none;
+ outline: none; 
+ /*removing outline from input is an accessibility bad practice. Users using screen readers will not be able to see where their pointer is focused at.*/
+ background: none;
+}
+#new-task-input{
+    flex: 1 1 0%; /*好像跟 flex: 1; 是一樣的?*/
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: var(--light);
+    background: var(--darker);
+    font-size: 1.25rem;
+}
+#new-task-input::placeholder{ 
+    color: var(--gray);
+}
+#new-task-submit{
+    color: var(--pink);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-image: linear-gradient(to right, var(--pink), 
+    var(--purple));
+    -webkit-background-clip: text; /*-webkit-為一種前綴字, 瀏覽器供應商測試css3新屬性防標準語法被破壞, chrom、safari瀏覽器用-webkit-, firefox瀏覽器用-moz-開頭*/
+    -webkit-text-fill-color: transparent; /* transparent透明*/
+    cursor: pointer;
+    transition: 0.4s; /* 查一下彭彭教過 動態變化 0.4秒*/
+};    /* -webkit-background-clip決定background painting(作畫)範圍; -webkit-text-fill-color(the fill color of characters of text.); */
+/*透明度 彭彭教過*/
+#new-task-submit:hover{
+    opacity: 0.8; 
+}
+#new-task-submit:active{
+ opacity: 0.6;
+}
+
+main{
+    padding: 2rem 1rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.task-list{
+    padding: 1rem;
+}
+.task-list h2{
+    font-size: 1.5rem; font-weight: 300;
+    margin-bottom: 1rem; color: var(--gray);
+}
+#tasks .task{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--darkest);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+#tasks .task .content{
+    flex: 1 1 0%;
+}
+#tasks .task .content .text{
+   color: var(--light);
+   font-size: 1.125rem;
+   width: 100%;
+   display: block;
+   transition: 0.4s;
+}
+
+#tasks .task .content .text:not(:read-only){ /*非readonly的 套用這個*/
+    color: var(--pink);
+}
+
+#tasks .task .actions{
+    display: flex;
+    margin: 0 -0.5rem;
+}
+#tasks .task .actions button{
+    cursor: pointer;
+    margin: 0 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.4s;
+}
+#tasks .task .actions button:hover{
+    opacity: 0.8; 
+}
+#tasks .task .actions button:active{
+ opacity: 0.6;
+}
+#tasks .task .actions .edit{
+    background-image: linear-gradient(to right, var(--pink), 
+    var(--purple));
+    -webkit-background-clip: text; /*-webkit-為一種前綴字, 瀏覽器供應商測試css3新屬性防標準語法被破壞, chrom、safari瀏覽器用-webkit-, firefox瀏覽器用-moz-開頭*/
+    -webkit-text-fill-color: transparent;
+}
+#tasks .task .actions .delete{
+    color: crimson;
+}
